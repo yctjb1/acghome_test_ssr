@@ -26,9 +26,14 @@ export class Index {
     this.ctx.redirect('/homepage/home')
   }
 
+  @Get('/error')
+  async handleNotFound(): Promise<void> {
+    this.ctx.redirect('/error/404')
+  }
+
   // @Get('/')
   // @Get('/detail/:id')
-  @Get('/404')
+  @Get('/error/:code')
   @Get('/login')
   async handler (): Promise<void> {
     try {
