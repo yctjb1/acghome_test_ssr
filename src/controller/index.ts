@@ -1,5 +1,5 @@
 import { Readable } from 'stream'
-import { Controller, Get, Provide, Inject } from '@midwayjs/decorator'
+import { Controller, Get, Provide, Inject, Redirect  } from '@midwayjs/decorator'
 import { Context } from 'egg'
 import { render } from 'ssr-core-react'
 import { IApiService, IApiDetailService } from '../interface'
@@ -21,11 +21,15 @@ export class Index {
   @Inject('ApiDetailService')
   apiDeatilservice: IApiDetailService
 
+  // @Get('/')
+  // async handleRedirect(): Promise<void> {
+  //   this.ctx.redirect('/homepage/home')
+  // }
   @Get('/')
-  async handleRedirect(): Promise<void> {
-    this.ctx.redirect('/homepage/home')
+  @Redirect('/homepage/home')
+  async handleHomeRedirect(): Promise<void> {//第二种写法
+      
   }
-
   @Get('/error')
   async handleNotFound(): Promise<void> {
     this.ctx.redirect('/error/404')

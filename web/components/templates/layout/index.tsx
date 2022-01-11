@@ -22,13 +22,13 @@ export default (props: SProps) => {
         activeKey: '1',
         panes:[
             {
-                title: <span>
-                    <Button type="primary" shape="circle" style={{borderRadius:"50% 50% 0 0",marginRight:8}}
-                    onClick={()=>{window.location.href="/";}}>
-                        <HomeOutlined style={{marginRight:0}}/>
+                title:<> 
+                    <Button type="primary" className="logoBtn"
+                    onClick={()=>{window.location.href="/"}}
+                    icon={<HomeOutlined style={{marginRight:0}}/>}>
                     </Button>
-                    动漫小站
-                    </span>,
+                    <span>动漫小站</span></>
+                    ,
                 content: <InMainLayout {...props}/>,
                 key: '1',
                 closable: false,
@@ -92,6 +92,7 @@ export default (props: SProps) => {
                     activeKey={tabState.activeKey}
                     type="editable-card"
                     onEdit={(targetKey, action)=>action=="add"?add():remove(targetKey)}
+                    hideAdd
                 >
                     {tabState.panes.map((pane:any) => (
                         <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>
